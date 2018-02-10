@@ -42,6 +42,176 @@ namespace SP.BLL
                 });
         }
 
+        public Parcelle GetParcelle(int id)
+        {
+            return this._context.Parcelles
+                .Where(ep => ep.IdParcelle == id)
+                .Select(parcelle => new Parcelle
+                {
+                    Adresse = parcelle.Adresse,
+                    CreationDate = parcelle.CreationDate,
+                    IdParcelle = parcelle.IdParcelle,
+                    Lat = parcelle.Lat,
+                    Lng = parcelle.Lng,
+                    Nom = parcelle.Nom,
+                    Ville = parcelle.Ville,
+                    Evenements = parcelle.Evenements.Select(even => new Evenement
+                    {
+                        CreationDate = even.CreationDate,
+                        EvenementParcelleId = even.EvenementParcelleId,
+                        IdEvenement = even.IdEvenement,
+                        ParcelleId = even.ParcelleId,
+                        EvenementParcelle = new EvenementParcelle
+                        {
+                            Nom = even.EvenementParcelle.Nom,
+                            Description = even.EvenementParcelle.Description,
+                            IdEvenementParcelle = even.EvenementParcelle.IdEvenementParcelle,
+                        }
+                    })
+                }).FirstOrDefault();
+        }
+
+        public IEnumerable<Parcelle> GetParcelles()
+        {
+            return this._context.Parcelles
+                .Select(parcelle => new Parcelle
+                {
+                    Adresse = parcelle.Adresse,
+                    CreationDate = parcelle.CreationDate,
+                    IdParcelle = parcelle.IdParcelle,
+                    Lat = parcelle.Lat,
+                    Lng = parcelle.Lng,
+                    Nom = parcelle.Nom,
+                    Ville = parcelle.Ville,
+                    Evenements = parcelle.Evenements.Select(even => new Evenement
+                    {
+                        CreationDate = even.CreationDate,
+                        EvenementParcelleId = even.EvenementParcelleId,
+                        IdEvenement = even.IdEvenement,
+                        ParcelleId = even.ParcelleId,
+                        EvenementParcelle = new EvenementParcelle
+                        {
+                            Nom = even.EvenementParcelle.Nom,
+                            Description = even.EvenementParcelle.Description,
+                            IdEvenementParcelle = even.EvenementParcelle.IdEvenementParcelle,
+                        }
+                    })
+                });
+        }
+
+        public EvenementParcelle GetEvenementParcelle(int id)
+        {
+            return this._context.EvenementParcelles
+                .Where(ep => ep.IdEvenementParcelle == id)
+                .Select(evenparcelle => new EvenementParcelle
+                {
+                    Description = evenparcelle.Description,
+                    Nom = evenparcelle.Nom,
+                    IdEvenementParcelle = evenparcelle.IdEvenementParcelle,
+                    Evenements = evenparcelle.Evenements.Select(even => new Evenement
+                    {
+                        CreationDate = even.CreationDate,
+                        EvenementParcelleId = even.EvenementParcelleId,
+                        IdEvenement = even.IdEvenement,
+                        ParcelleId = even.ParcelleId,
+                        Parcelle = new Parcelle
+                        {
+                            Adresse = even.Parcelle.Adresse,
+                            CreationDate = even.Parcelle.CreationDate,
+                            IdParcelle = even.Parcelle.IdParcelle,
+                            Lat = even.Parcelle.Lat,
+                            Lng = even.Parcelle.Lng,
+                            Nom = even.Parcelle.Nom,
+                            Ville = even.Parcelle.Ville,
+                        }
+                    })
+                }).FirstOrDefault();
+        }
+
+        public IEnumerable<EvenementParcelle> GetEvenementParcelles()
+        {
+            return this._context.EvenementParcelles
+                .Select(evenparcelle => new EvenementParcelle
+                {
+                    Description = evenparcelle.Description,
+                    Nom = evenparcelle.Nom,
+                    IdEvenementParcelle = evenparcelle.IdEvenementParcelle,
+                    Evenements = evenparcelle.Evenements.Select(even => new Evenement
+                    {
+                        CreationDate = even.CreationDate,
+                        EvenementParcelleId = even.EvenementParcelleId,
+                        IdEvenement = even.IdEvenement,
+                        ParcelleId = even.ParcelleId,
+                        Parcelle = new Parcelle
+                        {
+                            Adresse = even.Parcelle.Adresse,
+                            CreationDate = even.Parcelle.CreationDate,
+                            IdParcelle = even.Parcelle.IdParcelle,
+                            Lat = even.Parcelle.Lat,
+                            Lng = even.Parcelle.Lng,
+                            Nom = even.Parcelle.Nom,
+                            Ville = even.Parcelle.Ville,
+                        }
+                    })
+                });
+        }
+
+        public Evenement GetEvenement(int id)
+        {
+            return this._context.Evenements
+                .Where(e => e.IdEvenement == id)
+                .Select(even => new Evenement
+            {
+                CreationDate = even.CreationDate,
+                EvenementParcelleId = even.EvenementParcelleId,
+                IdEvenement = even.IdEvenement,
+                ParcelleId = even.ParcelleId,
+                EvenementParcelle = new EvenementParcelle
+                {
+                    Description = even.EvenementParcelle.Description,
+                    Nom = even.EvenementParcelle.Nom,
+                    IdEvenementParcelle = even.EvenementParcelle.IdEvenementParcelle
+                },
+                Parcelle = new Parcelle
+                {
+                    Adresse = even.Parcelle.Adresse,
+                    CreationDate = even.Parcelle.CreationDate,
+                    IdParcelle = even.Parcelle.IdParcelle,
+                    Lat = even.Parcelle.Lat,
+                    Lng = even.Parcelle.Lng,
+                    Nom = even.Parcelle.Nom,
+                    Ville = even.Parcelle.Ville
+                }
+            }).FirstOrDefault();
+        }
+
+        public IEnumerable<Evenement> GetEvenements()
+        {
+            return this._context.Evenements.Select(even => new Evenement
+            {
+                CreationDate = even.CreationDate,
+                EvenementParcelleId = even.EvenementParcelleId,
+                IdEvenement = even.IdEvenement,
+                ParcelleId = even.ParcelleId,
+                EvenementParcelle = new EvenementParcelle
+                {
+                    Description = even.EvenementParcelle.Description,
+                    Nom = even.EvenementParcelle.Nom,
+                    IdEvenementParcelle = even.EvenementParcelle.IdEvenementParcelle
+                },
+                Parcelle = new Parcelle
+                {
+                    Adresse = even.Parcelle.Adresse,
+                    CreationDate = even.Parcelle.CreationDate,
+                    IdParcelle = even.Parcelle.IdParcelle,
+                    Lat = even.Parcelle.Lat,
+                    Lng = even.Parcelle.Lng,
+                    Nom = even.Parcelle.Nom,
+                    Ville = even.Parcelle.Ville
+                }
+            });
+        }
+
         public User GetUserByLoginPassword(string login, string password)
         {
             return this._context.Users
@@ -56,15 +226,47 @@ namespace SP.BLL
                 }).FirstOrDefault();
         }
 
-        public int AddUser(string login, string password, string firstName, string lastName)
+        public int AddUser(User user)
         {
             return DAL.ManageData<DAL.User>.Add(new DAL.User
             {
                 CreationDate = DateTime.Now,
-                Login = login,
-                Password = password,
-                FirstName = firstName,
-                LastName = lastName
+                Login = user.Login,
+                Password = user.Password,
+                FirstName = user.FirstName,
+                LastName = user.LastName
+            });
+        }
+
+        public int AddParcelle(Parcelle parcelle)
+        {
+            return DAL.ManageData<DAL.Parcelle>.Add(new DAL.Parcelle
+            {
+                CreationDate = DateTime.Now,
+                Adresse = parcelle.Adresse,
+                Lat = parcelle.Lat,
+                Lng = parcelle.Lng,
+                Nom = parcelle.Nom,
+                Ville = parcelle.Ville
+            });
+        }
+
+        public int AddEvenementParcelle(EvenementParcelle evenementParcelle)
+        {
+            return DAL.ManageData<DAL.EvenementParcelle>.Add(new DAL.EvenementParcelle
+            {
+                Nom = evenementParcelle.Nom,
+                Description = evenementParcelle.Description
+            });
+        }
+
+        public int AddEvenement(Evenement evenement)
+        {
+            return DAL.ManageData<DAL.Evenement>.Add(new DAL.Evenement
+            {
+                CreationDate = DateTime.Now,
+                EvenementParcelleId = evenement.EvenementParcelleId,
+                ParcelleId = evenement.ParcelleId
             });
         }
     }

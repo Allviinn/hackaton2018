@@ -20,7 +20,6 @@ namespace SP.MVC.Controllers
         public ActionResult Index()
         {
             Context context = CreateContext();
-            //if (!this.IsConnected()) return this.RedirectToAction(nameof(HomeController.Login));
 
             try
             {
@@ -39,8 +38,11 @@ namespace SP.MVC.Controllers
             Context context = CreateContext();
             try
             {
-                //HomeModel model = new HomeModel();
-                return this.View();
+                HomeModel model = new HomeModel()
+                {
+                    User = new User()
+                };
+                return this.View(model);
             }
             catch (Exception ex)
             {
@@ -110,7 +112,7 @@ namespace SP.MVC.Controllers
             Context context = CreateContext();
             try
             {
-                int message = this.Services.AddUser(model.User.Login, model.User.Password, model.User.FirstName, model.User.LastName);
+                int message = this.Services.AddUser(model.User);
 
                 return this.RedirectToAction(nameof(HomeController.Index));
             }
