@@ -13,5 +13,37 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Evenements">
+      <EntityTypeMapping TypeName="DbSuiviParcelleModel.Evenement">
+        <MappingFragment StoreEntitySet="Evenement">
+          <ScalarProperty Name="EvenementParcelleId" ColumnName="EvenementParcelleId" />
+          <ScalarProperty Name="ParcelleId" ColumnName="ParcelleId" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="IdEvenement" ColumnName="IdEvenement" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EvenementParcelles">
+      <EntityTypeMapping TypeName="DbSuiviParcelleModel.EvenementParcelle">
+        <MappingFragment StoreEntitySet="EvenementParcelle">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="IdEvenementParcelle" ColumnName="IdEvenementParcelle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Parcelles">
+      <EntityTypeMapping TypeName="DbSuiviParcelleModel.Parcelle">
+        <MappingFragment StoreEntitySet="Parcelle">
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="Lng" ColumnName="Lng" />
+          <ScalarProperty Name="Lat" ColumnName="Lat" />
+          <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+          <ScalarProperty Name="Ville" ColumnName="Ville" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="IdParcelle" ColumnName="IdParcelle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

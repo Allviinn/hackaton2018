@@ -8,7 +8,33 @@
 <!DOCTYPE html>
 <html>
 <body>
+    <h1>Déplacer le curseur sur votre parcelle</h1>
     <div id="map" style="height:600px;width:1200px;"></div>
+
+    <!-- Trigger the modal with a button -->
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Ajouter parcelle</button>
+
+    <!-- Modal -->
+    <div class="modal" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Some text in the modal.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
     <!-- Init map -->
     <script type="text/javascript">
 
@@ -18,7 +44,7 @@
                 zoom: 20
             });
 
-            var infoWindow = new google.maps.InfoWindow({ map: map });
+            var marker = null;
 
             // Try HTML5 geolocation.
             if (navigator.geolocation) {
@@ -28,49 +54,30 @@
                         lng: position.coords.longitude
                     };
 
-                    // // Display msg
-                    infoWindow.setPosition(pos);
-                    infoWindow.setContent("You're here!");
                     map.setCenter(pos);
 
-                    var marker = new google.maps.Marker({
-                        position: pos,
-                        map: map,
-                        icon: 'img/vous-etes-ici.png'
-                    });
-
-
-                    var marker = new google.maps.Marker({
+                    marker = new google.maps.Marker({
                         position: { lat: pos.lat, lng: pos.lng },
                         map: map,
-                        // draggable: true,
+                        draggable: true,
                         animation: google.maps.Animation.DROP,
-                        label: '',
-                        title: '',
-                        icon: ''
                     });
-                    marker.addListener('click', toggleBounce);
 
-                    function toggleBounce() {
-                        if (marker.getAnimation() !== null) {
-                            marker.setAnimation(null);
-                        } else {
-                            marker.setAnimation(google.maps.Animation.BOUNCE);
-                        }
+                    function addMarker() {
+
                     }
                 },
                     function () {
-                        handleLocationError(true, infoWindow, map.getCenter());
+                        handleLocationError(true, map.getCenter());
                     });
             } else {
                 // Browser doesn't support Geolocation
-                handleLocationError(false, infoWindow, map.getCenter());
+                handleLocationError(false, map.getCenter());
             }
         }
 
-        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-            infoWindow.setPosition(pos);
-            infoWindow.setContent(browserHasGeolocation ? 'Error: The Geolocation service failed.' : 'Error: Your browser doesn\'t support geolocation.');
+        function handleLocationError(browserHasGeolocation, pos) {
+
         }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdLwyoDixq_X_Az65ZJX-GN5gTtKvQ27o&callback=initMap"></script>

@@ -51,9 +51,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Evenement.cs">
+      <DependentUpon>ModelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EvenementParcelle.cs">
+      <DependentUpon>ModelDb.tt</DependentUpon>
+    </Compile>
     <Compile Include="ModelDb.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>ModelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Parcelle.cs">
       <DependentUpon>ModelDb.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
