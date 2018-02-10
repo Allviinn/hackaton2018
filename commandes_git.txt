@@ -1,0 +1,18 @@
+commande :
+	git status : voir les fichiers modifiés
+
+	git add . : prépare tous les fichiers modifiés à être deployés
+
+	git commit : saisi message de modifs
+
+	git push : envoi des modifs en ligne
+
+	git pull : récuperation des dernières modifs en ligne
+
+
+ORDRE POUR EVITER LES CONFLITS : 
+
+1. git add . (on ajoute les fichiers modifiés )
+2. git commit  (on prépare le message )
+3. git pull (récup en ligne des dernières mdofis)
+4. git push (envoi de nos modifs en ligne)
