@@ -64,12 +64,12 @@ namespace SP.MVC.Controllers
 
                 HttpCookie userCookie = new HttpCookie("user")
                 {
-                    Value = model.User.Id.ToString(),
+                    Value = user.Id.ToString(),
                     Expires = DateTime.Now.AddDays(1)
                 };
                 HttpCookie firstnameCookie = new HttpCookie("firstname")
                 {
-                    Value = model.User.FirstName,
+                    Value = user.FirstName,
                     Expires = DateTime.Now.AddDays(1)
                 };
                 this.Response.Cookies.Add(userCookie);

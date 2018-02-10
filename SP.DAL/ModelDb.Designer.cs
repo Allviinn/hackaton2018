@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\Development\Hackathon\hackaton2018\SP.DAL\ModelDb.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\wamp64\www\HackathonACS\hackaton2018\hackaton2018\SP.DAL\ModelDb.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
