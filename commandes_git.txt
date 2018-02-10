@@ -16,3 +16,5 @@ ORDRE POUR EVITER LES CONFLITS :
 2. git commit  (on prépare le message )
 3. git pull (récup en ligne des dernières mdofis)
 4. git push (envoi de nos modifs en ligne)
+
+test
