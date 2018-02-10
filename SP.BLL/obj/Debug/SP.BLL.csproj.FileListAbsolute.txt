@@ -4,3 +4,8 @@ D:\Development\Hackathon\hackaton2018\SP.BLL\obj\Debug\SP.BLL.csprojResolveAssem
 D:\Development\Hackathon\hackaton2018\SP.BLL\obj\Debug\SP.BLL.csproj.CoreCompileInputs.cache
 D:\Development\Hackathon\hackaton2018\SP.BLL\obj\Debug\SP.BLL.dll
 D:\Development\Hackathon\hackaton2018\SP.BLL\obj\Debug\SP.BLL.pdb
+D:\wamp64\www\HackathonACS\hackaton2018\SP.BLL\bin\Debug\SP.BLL.dll
+D:\wamp64\www\HackathonACS\hackaton2018\SP.BLL\bin\Debug\SP.BLL.pdb
+D:\wamp64\www\HackathonACS\hackaton2018\SP.BLL\obj\Debug\SP.BLL.csproj.CoreCompileInputs.cache
+D:\wamp64\www\HackathonACS\hackaton2018\SP.BLL\obj\Debug\SP.BLL.dll
+D:\wamp64\www\HackathonACS\hackaton2018\SP.BLL\obj\Debug\SP.BLL.pdb
