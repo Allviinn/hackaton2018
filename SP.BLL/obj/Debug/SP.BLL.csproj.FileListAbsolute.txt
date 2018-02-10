@@ -1,0 +1,6 @@
+D:\Development\Hackathon\hackaton2018\SP.BLL\bin\Debug\SP.BLL.dll
+D:\Development\Hackathon\hackaton2018\SP.BLL\bin\Debug\SP.BLL.pdb
+D:\Development\Hackathon\hackaton2018\SP.BLL\obj\Debug\SP.BLL.csprojResolveAssemblyReference.cache
+D:\Development\Hackathon\hackaton2018\SP.BLL\obj\Debug\SP.BLL.csproj.CoreCompileInputs.cache
+D:\Development\Hackathon\hackaton2018\SP.BLL\obj\Debug\SP.BLL.dll
+D:\Development\Hackathon\hackaton2018\SP.BLL\obj\Debug\SP.BLL.pdb
