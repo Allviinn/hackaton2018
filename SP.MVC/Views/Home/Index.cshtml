@@ -1,4 +1,5 @@
-﻿@{
+﻿
+@{
     ViewBag.Title = "Home Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -7,17 +8,68 @@
 <html>
 <body>
     <div id="map" style="height:600px;width:1200px;"></div>
-    <script>
-        var map;
+    <!-- Init map -->
+    <script type="text/javascript">
+
         function initMap() {
-            map = new google.maps.Map(document.getElementById('map'), {
-                center: { lat: -34.397, lng: 150.644 },
-                zoom: 8
+
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 20
             });
-            var marker = new google.maps.Marker({
-                position: uluru,
-                map: map
-            });
+
+            var infoWindow = new google.maps.InfoWindow({ map: map });
+
+            // Try HTML5 geolocation.
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    var pos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+
+                    // // Display msg
+                    infoWindow.setPosition(pos);
+                    infoWindow.setContent("You're here!");
+                    map.setCenter(pos);
+
+                    var marker = new google.maps.Marker({
+                        position: pos,
+                        map: map,
+                        icon: 'img/vous-etes-ici.png'
+                    });
+
+
+                    var marker = new google.maps.Marker({
+                        position: { lat: pos.lat, lng: pos.lng },
+                        map: map,
+                        // draggable: true,
+                        animation: google.maps.Animation.DROP,
+                        label: '',
+                        title: '',
+                        icon: ''
+                    });
+                    marker.addListener('click', toggleBounce);
+
+                    function toggleBounce() {
+                        if (marker.getAnimation() !== null) {
+                            marker.setAnimation(null);
+                        } else {
+                            marker.setAnimation(google.maps.Animation.BOUNCE);
+                        }
+                    }
+                },
+                    function () {
+                        handleLocationError(true, infoWindow, map.getCenter());
+                    });
+            } else {
+                // Browser doesn't support Geolocation
+                handleLocationError(false, infoWindow, map.getCenter());
+            }
+        }
+
+        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+            infoWindow.setPosition(pos);
+            infoWindow.setContent(browserHasGeolocation ? 'Error: The Geolocation service failed.' : 'Error: Your browser doesn\'t support geolocation.');
         }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdLwyoDixq_X_Az65ZJX-GN5gTtKvQ27o&callback=initMap"></script>
