@@ -13,10 +13,10 @@ namespace SP.DAL
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DbSuiviParcelleEntities : DbContext
+    public partial class DbSuiviParcelleEntities1 : DbContext
     {
-        public DbSuiviParcelleEntities()
-            : base("name=DbSuiviParcelleEntities")
+        public DbSuiviParcelleEntities1()
+            : base("name=DbSuiviParcelleEntities1")
         {
         }
     
@@ -25,5 +25,6 @@ namespace SP.DAL
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<User> Users { get; set; }
     }
 }

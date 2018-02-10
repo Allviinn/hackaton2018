@@ -3,28 +3,122 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SP.BE;
+using SP.BLL;
+using SP.MVC.Models;
 
 namespace SP.MVC.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
+        public Services Services { get; set; }
+        public HomeController()
+        {
+            this.Services = new Services();
+        }
+
         public ActionResult Index()
         {
-            return View();
+            Context context = CreateContext();
+            //if (!this.IsConnected()) return this.RedirectToAction(nameof(HomeController.Login));
+
+            try
+            {
+                return View();
+            }
+            catch (Exception ex)
+            {
+                this.AddError(context.ErrorMessage, ex);
+                return this.RedirectToAction(nameof(HomeController.Index));
+            }
         }
 
-        public ActionResult About()
+        [HttpGet]
+        public ActionResult Login()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            Context context = CreateContext();
+            try
+            {
+                //HomeModel model = new HomeModel();
+                return this.View();
+            }
+            catch (Exception ex)
+            {
+                this.AddError(context.ErrorMessage, ex);
+                return this.RedirectToAction(nameof(HomeController.Index));
+            }
         }
 
-        public ActionResult Contact()
+        [HttpPost]
+        public ActionResult Login(HomeModel model)
         {
-            ViewBag.Message = "Your contact page.";
+            Context context = CreateContext();
+            try
+            {
+                User user = this.Services.GetUserByLoginPassword(model.User.Login, model.User.Password);
+                if (user == null)
+                {
+                    context.ErrorMessage.Add("L'utilisateur n'existe pas ou le mot de passe est incorrect.");
+                    throw new Exception();
+                }
 
-            return View();
+                HttpCookie userCookie = new HttpCookie("user")
+                {
+                    Value = model.User.Id.ToString(),
+                    Expires = DateTime.Now.AddDays(1)
+                };
+                HttpCookie firstnameCookie = new HttpCookie("firstname")
+                {
+                    Value = model.User.FirstName,
+                    Expires = DateTime.Now.AddDays(1)
+                };
+                this.Response.Cookies.Add(userCookie);
+                this.Response.Cookies.Add(firstnameCookie);
+
+                this.AddSuccess("Success connection!");
+                return this.RedirectToAction(nameof(HomeController.Index), new { });
+            }
+            catch (Exception ex)
+            {
+                this.AddError(context.ErrorMessage, ex);
+                return this.View(model);
+            }
+        }
+
+        [HttpGet]
+        public ActionResult SignUp()
+        {
+            Context context = CreateContext();
+            try
+            {
+                HomeModel model = new HomeModel()
+                {
+                    User = new User()
+                };
+                return this.View(model);
+            }
+            catch (Exception ex)
+            {
+                this.AddError(context.ErrorMessage, ex);
+                return this.RedirectToAction(nameof(HomeController.Index));
+            }
+        }
+
+        [HttpPost]
+        public ActionResult SignUp(HomeModel model)
+        {
+            Context context = CreateContext();
+            try
+            {
+                int message = this.Services.AddUser(model.User.Login, model.User.Password, model.User.FirstName, model.User.LastName);
+
+                return this.RedirectToAction(nameof(HomeController.Index));
+            }
+            catch (Exception ex)
+            {
+                this.AddError(context.ErrorMessage, ex);
+                return this.RedirectToAction(nameof(HomeController.Index));
+            }
         }
     }
 }

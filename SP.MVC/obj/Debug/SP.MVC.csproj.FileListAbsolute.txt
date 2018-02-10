@@ -39,3 +39,14 @@ D:\Development\Hackathon\hackaton2018\SP.MVC\bin\Microsoft.AI.Web.xml
 D:\Development\Hackathon\hackaton2018\SP.MVC\obj\Debug\SP.MVC.csproj.CoreCompileInputs.cache
 D:\Development\Hackathon\hackaton2018\SP.MVC\obj\Debug\SP.MVC.dll
 D:\Development\Hackathon\hackaton2018\SP.MVC\obj\Debug\SP.MVC.pdb
+D:\Development\Hackathon\hackaton2018\SP.MVC\obj\Debug\SP.MVC.csprojResolveAssemblyReference.cache
+D:\Development\Hackathon\hackaton2018\SP.MVC\bin\SP.BE.dll
+D:\Development\Hackathon\hackaton2018\SP.MVC\bin\SP.BLL.dll
+D:\Development\Hackathon\hackaton2018\SP.MVC\bin\SP.BE.pdb
+D:\Development\Hackathon\hackaton2018\SP.MVC\bin\SP.BLL.pdb
+D:\Development\Hackathon\hackaton2018\SP.MVC\bin\SP.BLL.dll.config
+D:\Development\Hackathon\hackaton2018\SP.MVC\bin\SP.DAL.exe
+D:\Development\Hackathon\hackaton2018\SP.MVC\bin\EntityFramework.dll
+D:\Development\Hackathon\hackaton2018\SP.MVC\bin\SP.DAL.pdb
+D:\Development\Hackathon\hackaton2018\SP.MVC\bin\SP.DAL.exe.config
+D:\Development\Hackathon\hackaton2018\SP.MVC\bin\EntityFramework.xml
