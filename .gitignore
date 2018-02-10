@@ -1,1 +1,10 @@
 .vs/*
+SP.DAL\App.config
+SP.DAL\bin/*
+SP.DAL\obj/*
+SP.BLL\bin/*
+SP.BLL\obj/*
+SP.BE\bin/*
+SP.BE\obj/*
+SP.MVC\bin/*
+SP.MVC\obj/*
