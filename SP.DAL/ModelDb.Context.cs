@@ -26,5 +26,8 @@ namespace SP.DAL
         }
     
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Evenement> Evenements { get; set; }
+        public virtual DbSet<EvenementParcelle> EvenementParcelles { get; set; }
+        public virtual DbSet<Parcelle> Parcelles { get; set; }
     }
 }
