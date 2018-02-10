@@ -6,6 +6,11 @@
     <edmx:Diagrams>
       <Diagram DiagramId="69c2387a0eed4a0889b63321d6045b8c" Name="Diagram1">
         <EntityTypeShape EntityType="DbSuiviParcelleModel.User" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbSuiviParcelleModel.Evenement" Width="1.5" PointX="5.625" PointY="0.875" />
+        <EntityTypeShape EntityType="DbSuiviParcelleModel.EvenementParcelle" Width="1.5" PointX="3.375" PointY="1.125" />
+        <EntityTypeShape EntityType="DbSuiviParcelleModel.Parcelle" Width="1.5" PointX="3.375" PointY="5.375" />
+        <AssociationConnector Association="DbSuiviParcelleModel.FkEvenementEvenementParcelle" />
+        <AssociationConnector Association="DbSuiviParcelleModel.FkEvenementParcelle" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
