@@ -1,0 +1,2 @@
+D:\wamp64\www\HackathonACS\hackaton2018\hackaton2018\SP.MVC\obj\Debug\SP.MVC.csprojResolveAssemblyReference.cache
+D:\wamp64\www\HackathonACS\hackaton2018\hackaton2018\SP.MVC\obj\Debug\SP.MVC.csproj.CoreCompileInputs.cache
