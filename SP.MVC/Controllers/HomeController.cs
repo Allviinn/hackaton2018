@@ -53,14 +53,15 @@ namespace SP.MVC.Controllers
 
             try
             {
-                var evenementParcelle = this.Services.GetEvenementParcelle(id);
-                EvenementParcelleModel model = new EvenementParcelleModel
-                {
-                    Description = evenementParcelle.Description,
-                    Nom = evenementParcelle.Nom,
-                    IdEvenementParcelle = evenementParcelle.IdEvenementParcelle
-                };
-                return View(model);
+                //var evenementParcelle = this.Services.GetEvenementParcelle(id);
+                //EvenementParcelleModel model = new EvenementParcelleModel
+                //{
+                //    Description = evenementParcelle.Description,
+                //    Nom = evenementParcelle.Nom,
+                //    IdEvenementParcelle = evenementParcelle.IdEvenementParcelle
+                //};
+                //return View(model);
+                return this.View();
             }
             catch (Exception ex)
             {
@@ -75,14 +76,15 @@ namespace SP.MVC.Controllers
 
             try
             {
-                var evenementParcelle = this.Services.GetEvenementParcelle(id);
-                EvenementParcelleModel model = new EvenementParcelleModel
-                {
-                    Description = evenementParcelle.Description,
-                    Nom = evenementParcelle.Nom,
-                    IdEvenementParcelle = evenementParcelle.IdEvenementParcelle
-                };
-                return View(model);
+                //var evenementParcelle = this.Services.GetEvenementParcelle(id);
+                //EvenementParcelleModel model = new EvenementParcelleModel
+                //{
+                //    Description = evenementParcelle.Description,
+                //    Nom = evenementParcelle.Nom,
+                //    IdEvenementParcelle = evenementParcelle.IdEvenementParcelle
+                //};
+                //return View(model);
+                return this.View();
             }
             catch (Exception ex)
             {
@@ -97,7 +99,27 @@ namespace SP.MVC.Controllers
 
             try
             {
-                return View();
+                HomeModel model = new HomeModel();
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                this.AddError(context.ErrorMessage, ex);
+                return this.RedirectToAction(nameof(HomeController.AddEvenementParcelle));
+            }
+        }
+
+        [HttpPost]
+        public ActionResult AddEvenementParcelle(HomeModel model)
+        {
+            Context context = CreateContext();
+
+            try
+            {
+                this.Services.AddEvenementParcelle(model.EvenementParcelle);
+
+                this.AddSuccess("Evenement ajouté.");
+                return View(model);
             }
             catch (Exception ex)
             {
@@ -109,15 +131,14 @@ namespace SP.MVC.Controllers
         public ActionResult ListEvenementsParcelle()
         {
             Context context = CreateContext();
-            var evenementsParcelle = this.Services.GetEvenementParcelles().
-                Select(ep => new Models.EvenementParcelleModel {
-                    IdEvenementParcelle = ep.IdEvenementParcelle,
-                    Description = ep.Description,
-                    Nom = ep.Nom
-                }).ToList();
+
             try
             {
-                return View(evenementsParcelle);
+                HomeModel model = new HomeModel
+                {
+                    EvenementParcelles = this.Services.GetEvenementParcelles().ToList()
+                };
+                return View(model);
             }
             catch (Exception ex)
             {
