@@ -147,6 +147,78 @@ namespace SP.MVC.Controllers
             }
         }
 
+        public ActionResult ListParcelles()
+        {
+            Context context = CreateContext();
+
+            try
+            {
+                HomeModel model = new HomeModel
+                {
+                    Parcelles = this.Services.GetParcelles().ToList()
+                };
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                this.AddError(context.ErrorMessage, ex);
+                return this.RedirectToAction(nameof(HomeController.ListParcelles));
+            }
+        }
+
+        public ActionResult EditParcelle(Parcelle parcelle)
+        {
+            Context context = CreateContext();
+
+            try
+            {
+                HomeModel model = new HomeModel
+                {
+                    Parcelle = this.Services.GetParcelle(parcelle.IdParcelle)
+                };
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                this.AddError(context.ErrorMessage, ex);
+                return this.RedirectToAction(nameof(HomeController.EditParcelle));
+            }
+        }
+
+        public ActionResult DeleteParcelle(int id)
+        {
+            Context context = CreateContext();
+
+            try
+            {
+                return View();
+            }
+            catch (Exception ex)
+            {
+                this.AddError(context.ErrorMessage, ex);
+                return this.RedirectToAction(nameof(HomeController.DeleteParcelle));
+            }
+        }
+
+        public ActionResult AddEvenement()
+        {
+            Context context = CreateContext();
+
+            try
+            {
+                HomeModel model = new HomeModel()
+                {
+
+                };
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                this.AddError(context.ErrorMessage, ex);
+                return this.RedirectToAction(nameof(HomeController.AddEvenement));
+            }
+        }
+
         [HttpGet]
         public ActionResult Login()
         {
