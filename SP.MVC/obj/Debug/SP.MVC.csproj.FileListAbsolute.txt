@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-D:\wamp64\www\HackathonACS\hackaton2018\hackaton2018\SP.MVC\obj\Debug\SP.MVC.csprojResolveAssemblyReference.cache
-D:\wamp64\www\HackathonACS\hackaton2018\hackaton2018\SP.MVC\obj\Debug\SP.MVC.csproj.CoreCompileInputs.cache
-=======
 D:\Development\Hackathon\hackaton2018\SP.MVC\bin\ApplicationInsights.config
 D:\Development\Hackathon\hackaton2018\SP.MVC\bin\SP.MVC.dll.config
 D:\Development\Hackathon\hackaton2018\SP.MVC\bin\SP.MVC.dll
@@ -56,4 +52,3 @@ D:\Development\Hackathon\hackaton2018\SP.MVC\obj\Debug\SP.MVC.csprojResolveAssem
 D:\Development\Hackathon\hackaton2018\SP.MVC\obj\Debug\SP.MVC.csproj.CoreCompileInputs.cache
 D:\Development\Hackathon\hackaton2018\SP.MVC\obj\Debug\SP.MVC.dll
 D:\Development\Hackathon\hackaton2018\SP.MVC\obj\Debug\SP.MVC.pdb
->>>>>>> 963055c571d83573a512aeffb20164df96e846ae

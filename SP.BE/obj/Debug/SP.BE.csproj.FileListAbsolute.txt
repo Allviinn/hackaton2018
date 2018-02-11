@@ -1,15 +1,6 @@
-<<<<<<< HEAD
-D:\wamp64\www\HackathonACS\hackaton2018\hackaton2018\SP.BE\bin\Debug\SP.BE.dll
-D:\wamp64\www\HackathonACS\hackaton2018\hackaton2018\SP.BE\bin\Debug\SP.BE.pdb
-D:\wamp64\www\HackathonACS\hackaton2018\hackaton2018\SP.BE\obj\Debug\SP.BE.csprojResolveAssemblyReference.cache
-D:\wamp64\www\HackathonACS\hackaton2018\hackaton2018\SP.BE\obj\Debug\SP.BE.csproj.CoreCompileInputs.cache
-D:\wamp64\www\HackathonACS\hackaton2018\hackaton2018\SP.BE\obj\Debug\SP.BE.dll
-D:\wamp64\www\HackathonACS\hackaton2018\hackaton2018\SP.BE\obj\Debug\SP.BE.pdb
-=======
 D:\Development\Hackathon\hackaton2018\SP.BE\bin\Debug\SP.BE.dll
 D:\Development\Hackathon\hackaton2018\SP.BE\bin\Debug\SP.BE.pdb
 D:\Development\Hackathon\hackaton2018\SP.BE\obj\Debug\SP.BE.csprojResolveAssemblyReference.cache
 D:\Development\Hackathon\hackaton2018\SP.BE\obj\Debug\SP.BE.csproj.CoreCompileInputs.cache
 D:\Development\Hackathon\hackaton2018\SP.BE\obj\Debug\SP.BE.dll
 D:\Development\Hackathon\hackaton2018\SP.BE\obj\Debug\SP.BE.pdb
->>>>>>> 963055c571d83573a512aeffb20164df96e846ae
