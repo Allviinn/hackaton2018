@@ -18,13 +18,10 @@
         @Html.HiddenFor(m => m.Evenement.IdEvenement)
         @Html.HiddenFor(m => m.IdParcelle)
         <div class="form-group">
-            @Html.LabelFor(model => model.Evenement.EvenementParcelleId, "EvenementParcelleId", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="form-group form-actions">
                 @Html.LabelFor(model => model.EvenementParcelle.IdEvenementParcelle, htmlAttributes: new { @class = "col-sm-3 control-label" })
                 <div class="col-sm-9">@Html.DropDownListFor(model => model.EvenementParcelle.IdEvenementParcelle, Model.SelectListEvenementParcelle, "Aucun évenement", htmlAttributes: new { @style = "min-height:34px;width:max", @class = "form-control" })</div>
             </div>
-
-            qsdqs
         </div>
 
         <div class="form-group">

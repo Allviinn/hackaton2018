@@ -136,26 +136,32 @@ namespace SP.MVC.Controllers
 
             try
             {
+                if (model.EvenementParcelle.IdEvenementParcelle == 0)
+                {
+                    this.Services.AddEvenementParcelle(model.EvenementParcelle);
+                }
                 this.Services.EditEvenementParcelle(model.EvenementParcelle);
 
                 this.AddSuccess("L'évenement est bien édité!");
-                return this.View(model);
+                return this.RedirectToAction(nameof(HomeController.ListEvenementsParcelle));
             }
             catch (Exception ex)
             {
                 this.AddError(context.ErrorMessage, ex);
-                return this.RedirectToAction(nameof(HomeController.EditEvenementParcelle));
+                return this.RedirectToAction(nameof(HomeController.EditEvenementParcelle), new { model = model });
             }
         }
 
-        public ActionResult DeleteEvenementParcelle(int id)
+        public ActionResult DeleteEvenement(int id)
         {
             Context context = CreateContext();
 
             try
             {
+                this.Services.DeleteEvenement(id);
+
                 this.AddSuccess("L'évenement a bien été supprimé");
-                return this.RedirectToAction(nameof(HomeController.ListEvenementsParcelle));
+                return this.RedirectToAction(nameof(HomeController.Index));
             }
             catch (Exception ex)
             {
@@ -211,6 +217,28 @@ namespace SP.MVC.Controllers
             }
         }
 
+        public ActionResult EditParcelle(int id)
+        {
+            Context context = CreateContext();
+
+            try
+            {
+                HomeModel model = new HomeModel
+                {
+                    Parcelle = this.Services.GetParcelle(id)
+                };
+
+                this.AddSuccess("La parcelle est bien modifiée!");
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                this.AddError(context.ErrorMessage, ex);
+                return this.RedirectToAction(nameof(HomeController.ListParcelles));
+            }
+        }
+
+        [HttpPost]
         public ActionResult EditParcelle(HomeModel model)
         {
             Context context = CreateContext();
@@ -220,12 +248,12 @@ namespace SP.MVC.Controllers
                 this.Services.EditParcelle(model.Parcelle);
 
                 this.AddSuccess("La parcelle est bien modifiée!");
-                return View(model);
+                return this.RedirectToAction(nameof(HomeController.ListParcelles));
             }
             catch (Exception ex)
             {
                 this.AddError(context.ErrorMessage, ex);
-                return this.RedirectToAction(nameof(HomeController.EditParcelle));
+                return this.View(model);
             }
         }
 
@@ -353,7 +381,8 @@ namespace SP.MVC.Controllers
                 HomeModel model = new HomeModel()
                 {
                     Evenements = this.Services.GetEvenementByParcelle(id).ToList(),
-                    IdParcelle = id
+                    IdParcelle = id,
+                    Parcelle = this.Services.GetParcelle(id)
                 };
 
                 return View(model);

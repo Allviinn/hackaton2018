@@ -8,7 +8,7 @@
 <h2>Référentiel évènements</h2>
 
 <p>
-    @Html.ActionLink("Create New", "AddEvenementParcelle")
+    <a class="btn btn-success" href="@Url.Content("~/Home/AddEvenementParcelle?id=0")">Ajouter</a> |
 </p>
 <table class="table">
     <tr>
@@ -31,8 +31,8 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @Html.ActionLink("Edit", "EditEvenementParcelle", new { id = item.IdEvenementParcelle }) |
-                @Html.ActionLink("Delete", "DeleteEvenementParcelle", new { id = item.IdEvenementParcelle })
+                <a class="btn btn-success" href="@Url.Content("~/Home/EditEvenementParcelle?id=" + item.IdEvenementParcelle)">Editer</a>
+                @*<a class="btn btn-danger" href="@Url.Content("~/Home/DeleteEvenementParcelle?id=" + item.IdEvenementParcelle)">Supprimer</a>*@
             </td>
         </tr>
     }

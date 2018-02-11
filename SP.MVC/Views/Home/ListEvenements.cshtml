@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>ListEvenements</h2>
+<h2>Liste des évenements sur la parcelle <i>@Model.Parcelle.Nom</i> de la ville <i>@Model.Parcelle.Ville</i></h2>
 
 <p>
     <a class="btn btn-success" href="@Url.Content("~/Home/AddEvenement?id=0&idParcelle=" + Model.IdParcelle)">Ajouter un evenement</a>
@@ -37,7 +37,7 @@
         </td>
         <td>
             <a class="btn btn-success" href="@Url.Content("~/Home/AddEvenement?id=" + item.IdEvenement + "&idParcelle=" + Model.IdParcelle)">Editer</a> |
-            <a class="btn btn-danger" href="@Url.Content("~/Home/DeleteParcelle?id=" + item.IdEvenement)">Supprimer</a>
+            <a class="btn btn-danger" href="@Url.Content("~/Home/DeleteEvenement?id=" + item.IdEvenement)">Supprimer</a>
         </td>
     </tr>
 }
