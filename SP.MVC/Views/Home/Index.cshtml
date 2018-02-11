@@ -1,4 +1,4 @@
-﻿
+﻿@model SP.MVC.Models.HomeModel
 @{
     ViewBag.Title = "Home Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -8,7 +8,7 @@
 <html>
 <body>
     <h1>Déplacer le curseur sur votre parcelle</h1>
-    <div id="map" style="height:600px;width:1200px;"></div>
+    <div id="map" style="height:45em;"></div>
 
     <!-- Init map -->
     <script type="text/javascript">
@@ -33,20 +33,15 @@
                     };
 
                     var contentString = '<div>' +
-                        '<h2>Nouvelle parcelle</h2>' +
-                        '<div class="form-group">' +
-                        '<label>Nom</label>' +
-                        '<input type="text" class="form-control" id="inputNom" placeholder="Nom">' +
-                        '</div>' +
-                        '<div class="form-group">' +
-                        '<label>Latitude</label>' +
-                        '<input type="text" class="form-control" id="inputLatitude" placeholder="Latitude">' +
-                        '</div>' +
-                        '<div class="form-group">' +
-                        '<label>Longitude</label>' +
-                        '<input type="text" class="form-control" id="inputLongitude" placeholder="Longitude">' +
-                        '</div>' +
-                        '<button class="btn btn-primary">Enregistrer</button>' +
+
+                        '<form action="@Url.Content("~/Home/AddParcelle")" method="post"><input name="__RequestVerificationToken" type="hidden" value="tzcQkGxozIMTwRFIw1imxxqxdbwmouQKDGLTcSt__pSMx5x1Zm5GqjMRI2r4Kl6Uxo0B41xVkuPRrRDUt3LjKL5RDtu4pj6b4wT9P_cOX6k1" />    <div class="form-horizontal"><h4>Nouvelle parcelle</h4><hr />' +
+                            '<div class="form-group"><label class="control-label col-md-2" for="name">Nom</label><div class="col-md-10"><input class="form-control text-box single-line" id="name" name="name" type="text" value="" /><span class="field-validation-valid text-danger" data-valmsg-for="name" data-valmsg-replace="true"></span></div></div>' +
+                            '<div class="form-group"><label class="control-label col-md-2" for="lat">Latitude</label><div class="col-md-10"><input class="form-control text-box single-line" id="lat" name="lat" type="text" value="" /><span class="field-validation-valid text-danger" data-valmsg-for="lat" data-valmsg-replace="true"></span></div></div>' +
+                            '<div class="form-group"><label class="control-label col-md-2" for="lng">Longitude</label><div class="col-md-10"><input class="form-control text-box single-line" id="lng" name="lng" type="text" value="" /><span class="field-validation-valid text-danger" data-valmsg-for="lng" data-valmsg-replace="true"></span></div></div>' +
+                            '<div class="form-group"><label class="control-label col-md-2" for="ville">Ville</label><div class="col-md-10"><input class="form-control text-box single-line" id="ville" name="ville" type="text" value="" /><span class="field-validation-valid text-danger" data-valmsg-for="ville" data-valmsg-replace="true"></span></div></div>' +
+
+                            '<div class="form-group"><div class="col-md-offset-2 col-md-10"><input type="submit" value="Create" class="btn btn-default" /></div></div>' +
+                        '</div></form>' +
                         '</div>';
 
                     var infowindow = new google.maps.InfoWindow({
@@ -64,13 +59,13 @@
 
                     marker.addListener('click', function () {
                         infowindow.open(map, marker);
-                        document.getElementById('inputLatitude').value = marker.getPosition().lat();
-                        document.getElementById('inputLongitude').value = marker.getPosition().lng();
+                        document.getElementById('lat').value = marker.getPosition().lat();
+                        document.getElementById('lng').value = marker.getPosition().lng();
                     });
 
                     marker.addListener('dragend', function () {
-                        document.getElementById('inputLatitude').value = marker.getPosition().lat();
-                        document.getElementById('inputLongitude').value = marker.getPosition().lng();
+                        document.getElementById('lat').value = marker.getPosition().lat();
+                        document.getElementById('lng').value = marker.getPosition().lng();
                     });
                 },
                     function () {

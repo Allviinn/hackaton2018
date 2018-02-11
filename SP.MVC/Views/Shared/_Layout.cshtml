@@ -15,36 +15,47 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav mr-auto">
-
                 <li class="nav-item">
-                    <a class="nav-link" href="@Url.Content("~/Home/About")">À propos</a> 
-                  
+                    <a class="nav-link" href="@Url.Content("~/Home/About")">À propos</a>
                 </li>
-
-
             </ul>
             <ul class="navbar-nav my-2 my-lg-0">
                 <li class="nav-item">
-                    <a href="@Url.Content("~/Home/Login")" class="nav-link">Connexion</a></li>
-
-                <li class="nav-item"> <a href="@Url.Content("~/Home/SignUp")" class="nav-link">Inscription</a></li>
-
+                    <a href="@Url.Content("~/Home/Login")" class="nav-link">Connexion</a>
+                </li>
+                <li class="nav-item">
+                    <a href="@Url.Content("~/Home/SignUp")" class="nav-link">Inscription</a>
+                </li>
             </ul>
         </div>
     </nav>
 
-    <div class="container body-content" style="margin-top: 40px;">
+    <div class="container body-content">
+        @if (TempData.Keys.Any(k => k.ToString() == "error"))
+        {
+            <div class="panel panel-danger" style="width:100%; background-color:red;">
+                <div class="panel-heading"><h3>Error</h3></div>
+                <div class="panel-body">@Html.Raw(TempData["error"])</div>
+            </div>
+        }
+
+        @if (TempData.Keys.Any(k => k.ToString() == "success"))
+        {
+            <div class="panel panel-danger" style="background-color:green;">
+                <div class="panel-heading"><h3>Success</h3></div>
+                <div class="panel-body">@Html.Raw(TempData["success"])</div>
+            </div>
+        }
         @RenderBody()
 
     </div>
 
-     <hr />
-        <footer class="navbar navbar-expand-lg navbar-dark bg-info ">
-            <p class="nav-item col-6 offset-3">&copy; @DateTime.Now.Year - Réalisation Alexis | Victor | Alvin</p>
-        </footer>
+    <hr />
+    <footer class="navbar navbar-expand-lg navbar-dark bg-info ">
+        <p class="nav-item col-6 offset-3">&copy; @DateTime.Now.Year - Réalisation Alexis | Victor | Alvin</p>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

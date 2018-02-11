@@ -114,6 +114,31 @@ namespace SP.MVC.Controllers
             {
                 int message = this.Services.AddUser(model.User);
 
+                this.AddSuccess("Utilisateur ajouté!");
+                return this.RedirectToAction(nameof(HomeController.Index));
+            }
+            catch (Exception ex)
+            {
+                this.AddError(context.ErrorMessage, ex);
+                return this.RedirectToAction(nameof(HomeController.Index));
+            }
+        }
+
+        [HttpPost]
+        public ActionResult AddParcelle(string name, string lat, string lng, string ville)
+        {
+            Context context = CreateContext();
+            try
+            {
+                int message = this.Services.AddParcelle(new Parcelle
+                {
+                    Nom = name,
+                    Lat = lat,
+                    Lng = lng,
+                    Ville = ville
+                });
+
+                this.AddSuccess("Parcelle ajoutée!");
                 return this.RedirectToAction(nameof(HomeController.Index));
             }
             catch (Exception ex)
