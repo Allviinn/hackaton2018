@@ -192,9 +192,6 @@ namespace SP.MVC.Controllers
             }
         }
 
-
-       
-
         public ActionResult ListParcelles()
         {
             Context context = CreateContext();
@@ -214,16 +211,15 @@ namespace SP.MVC.Controllers
             }
         }
 
-        public ActionResult EditParcelle(Parcelle parcelle)
+        public ActionResult EditParcelle(HomeModel model)
         {
             Context context = CreateContext();
 
             try
             {
-                HomeModel model = new HomeModel
-                {
-                    Parcelle = this.Services.GetParcelle(parcelle.IdParcelle)
-                };
+                this.Services.EditParcelle(model.Parcelle);
+
+                this.AddSuccess("La parcelle est bien modifiée!");
                 return View(model);
             }
             catch (Exception ex)
@@ -239,7 +235,14 @@ namespace SP.MVC.Controllers
 
             try
             {
-                return this.RedirectToAction(nameof(HomeController.DeleteParcelle));
+                this.Services.DeleteParcelle(id);
+                this.AddSuccess("La parcelle a bien été supprimée!");
+                return this.RedirectToAction(nameof(HomeController.ListParcelles));
+            }
+            catch(Exception ex)
+            {
+                this.AddError(context.ErrorMessage, ex);
+                return this.RedirectToAction(nameof(HomeController.ListParcelles));
             }
         }
         
@@ -341,7 +344,7 @@ namespace SP.MVC.Controllers
 
         #endregion User
 
-        public ActionResult AddEvenement()
+        public ActionResult ListEvenements(int id)
         {
             Context context = CreateContext();
 
@@ -349,14 +352,80 @@ namespace SP.MVC.Controllers
             {
                 HomeModel model = new HomeModel()
                 {
-
+                    Evenements = this.Services.GetEvenementByParcelle(id).ToList(),
+                    IdParcelle = id
                 };
+
                 return View(model);
             }
             catch (Exception ex)
             {
                 this.AddError(context.ErrorMessage, ex);
-                return this.RedirectToAction(nameof(HomeController.AddEvenement));
+                return this.RedirectToAction(nameof(HomeController.ListParcelles));
+            }
+        }
+
+        public ActionResult AddEvenement(int id, int idParcelle)
+        {
+            Context context = CreateContext();
+
+            try
+            {
+                HomeModel model = new HomeModel()
+                {
+                    Evenement = id != 0 ? this.Services.GetEvenement(id) : null,
+                    IdParcelle = idParcelle
+                };
+                model.LoadEvenementParcelle(this.Services.GetEvenementParcelles());
+
+                if (model.Evenement == null)
+                {
+                    model.Evenement = new Evenement { ParcelleId = idParcelle };
+                    this.View(model);
+                }
+
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                this.AddError(context.ErrorMessage, ex);
+                return this.RedirectToAction(nameof(HomeController.ListParcelles));
+            }
+        }
+
+        [HttpPost]
+        public ActionResult AddEvenement(HomeModel model)
+        {
+            Context context = CreateContext();
+
+            try
+            {
+                if (model.Evenement.IdEvenement == 0)
+                {
+                    this.Services.AddEvenement(new Evenement
+                    {
+                        ParcelleId = model.IdParcelle,
+                        EvenementParcelleId = model.EvenementParcelle.IdEvenementParcelle
+                    });
+
+                    this.AddSuccess("L'évenement a bien été ajouté!");
+                    return this.RedirectToAction(nameof(HomeController.ListEvenements), new { id = model.IdParcelle });
+                }
+
+                this.Services.EditEvenement(new Evenement
+                {
+                    IdEvenement = model.Evenement.IdEvenement,
+                    ParcelleId = model.IdParcelle,
+                    EvenementParcelleId = model.EvenementParcelle.IdEvenementParcelle
+                });
+
+                this.AddSuccess("L'évenement a bien été édité!");
+                return this.RedirectToAction(nameof(HomeController.ListEvenements), new { id = model.IdParcelle });
+            }
+            catch (Exception ex)
+            {
+                this.AddError(context.ErrorMessage, ex);
+                return this.RedirectToAction(nameof(HomeController.Index));
             }
         }
     }

@@ -1,5 +1,6 @@
 .vs/*
 SP.DAL\App.config
+SP.MVC\Web.config
 SP.DAL\bin/*
 SP.DAL\obj/*
 SP.BLL\bin/*

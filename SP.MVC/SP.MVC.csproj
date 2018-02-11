@@ -201,6 +201,7 @@
     <Content Include="Views\Home\ListParcelles.cshtml" />
     <Content Include="Views\Home\EditParcelle.cshtml" />
     <Content Include="Views\Home\AddEvenement.cshtml" />
+    <Content Include="Views\Home\ListEvenements.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
