@@ -32,6 +32,100 @@ namespace SP.MVC.Controllers
             }
         }
 
+        public ActionResult About()
+        {
+            Context context = CreateContext();
+
+            try
+            {
+                return View();
+            }
+            catch (Exception ex)
+            {
+                this.AddError(context.ErrorMessage, ex);
+                return this.RedirectToAction(nameof(HomeController.About));
+            }
+        }
+
+        public ActionResult EditEvenementParcelle(int id)
+        {
+            Context context = CreateContext();
+
+            try
+            {
+                var evenementParcelle = this.Services.GetEvenementParcelle(id);
+                EvenementParcelleModel model = new EvenementParcelleModel
+                {
+                    Description = evenementParcelle.Description,
+                    Nom = evenementParcelle.Nom,
+                    IdEvenementParcelle = evenementParcelle.IdEvenementParcelle
+                };
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                this.AddError(context.ErrorMessage, ex);
+                return this.RedirectToAction(nameof(HomeController.EditEvenementParcelle));
+            }
+        }
+
+        public ActionResult DeleteEvenementParcelle(int id)
+        {
+            Context context = CreateContext();
+
+            try
+            {
+                var evenementParcelle = this.Services.GetEvenementParcelle(id);
+                EvenementParcelleModel model = new EvenementParcelleModel
+                {
+                    Description = evenementParcelle.Description,
+                    Nom = evenementParcelle.Nom,
+                    IdEvenementParcelle = evenementParcelle.IdEvenementParcelle
+                };
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                this.AddError(context.ErrorMessage, ex);
+                return this.RedirectToAction(nameof(HomeController.DeleteEvenementParcelle));
+            }
+        }
+
+        public ActionResult AddEvenementParcelle()
+        {
+            Context context = CreateContext();
+
+            try
+            {
+                return View();
+            }
+            catch (Exception ex)
+            {
+                this.AddError(context.ErrorMessage, ex);
+                return this.RedirectToAction(nameof(HomeController.AddEvenementParcelle));
+            }
+        }
+
+        public ActionResult ListEvenementsParcelle()
+        {
+            Context context = CreateContext();
+            var evenementsParcelle = this.Services.GetEvenementParcelles().
+                Select(ep => new Models.EvenementParcelleModel {
+                    IdEvenementParcelle = ep.IdEvenementParcelle,
+                    Description = ep.Description,
+                    Nom = ep.Nom
+                }).ToList();
+            try
+            {
+                return View(evenementsParcelle);
+            }
+            catch (Exception ex)
+            {
+                this.AddError(context.ErrorMessage, ex);
+                return this.RedirectToAction(nameof(HomeController.ListEvenementsParcelle));
+            }
+        }
+
         [HttpGet]
         public ActionResult Login()
         {
