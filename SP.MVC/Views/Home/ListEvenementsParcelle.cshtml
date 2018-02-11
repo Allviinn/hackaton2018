@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SP.MVC.Models.EvenementParcelleModel>
+﻿@model SP.MVC.Models.HomeModel
 
 @{
     ViewBag.Title = "ListEvenementsParcelle";
@@ -13,15 +13,15 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Nom)
+            @Html.DisplayNameFor(m => m.EvenementParcelle.Nom)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
+            @Html.DisplayNameFor(m => m.EvenementParcelle.Description)
         </th>
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
+    @foreach (var item in Model.EvenementParcelles)
     {
         <tr>
             <td>

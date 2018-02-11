@@ -153,10 +153,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\EvenementModel.cs" />
-    <Compile Include="Models\EvenementParcelleModel.cs" />
     <Compile Include="Models\HomeModel.cs" />
-    <Compile Include="Models\ParcelleModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

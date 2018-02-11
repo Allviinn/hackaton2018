@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DbSuiviParcelleModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Login" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityContainer Name="DbSuiviParcelleEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="Evenements" EntityType="DbSuiviParcelleModel.Evenement" />
+    <EntitySet Name="EvenementParcelles" EntityType="DbSuiviParcelleModel.EvenementParcelle" />
+    <EntitySet Name="Parcelles" EntityType="DbSuiviParcelleModel.Parcelle" />
+    <AssociationSet Name="FkEvenementEvenementParcelle" Association="DbSuiviParcelleModel.FkEvenementEvenementParcelle">
+      <End Role="EvenementParcelle" EntitySet="EvenementParcelles" />
+      <End Role="Evenement" EntitySet="Evenements" />
+    </AssociationSet>
+    <AssociationSet Name="FkEvenementParcelle" Association="DbSuiviParcelleModel.FkEvenementParcelle">
+      <End Role="Parcelle" EntitySet="Parcelles" />
+      <End Role="Evenement" EntitySet="Evenements" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Evenement">
+    <Key>
+      <PropertyRef Name="IdEvenement" />
+    </Key>
+    <Property Name="IdEvenement" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ParcelleId" Type="Int32" Nullable="false" />
+    <Property Name="EvenementParcelleId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="EvenementParcelle" Relationship="DbSuiviParcelleModel.FkEvenementEvenementParcelle" FromRole="Evenement" ToRole="EvenementParcelle" />
+    <NavigationProperty Name="Parcelle" Relationship="DbSuiviParcelleModel.FkEvenementParcelle" FromRole="Evenement" ToRole="Parcelle" />
+  </EntityType>
+  <EntityType Name="EvenementParcelle">
+    <Key>
+      <PropertyRef Name="IdEvenementParcelle" />
+    </Key>
+    <Property Name="IdEvenementParcelle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Evenements" Relationship="DbSuiviParcelleModel.FkEvenementEvenementParcelle" FromRole="EvenementParcelle" ToRole="Evenement" />
+  </EntityType>
+  <EntityType Name="Parcelle">
+    <Key>
+      <PropertyRef Name="IdParcelle" />
+    </Key>
+    <Property Name="IdParcelle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Ville" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Adresse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Lat" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Lng" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Evenements" Relationship="DbSuiviParcelleModel.FkEvenementParcelle" FromRole="Parcelle" ToRole="Evenement" />
+  </EntityType>
+  <Association Name="FkEvenementEvenementParcelle">
+    <End Type="DbSuiviParcelleModel.EvenementParcelle" Role="EvenementParcelle" Multiplicity="1" />
+    <End Type="DbSuiviParcelleModel.Evenement" Role="Evenement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EvenementParcelle">
+        <PropertyRef Name="IdEvenementParcelle" />
+      </Principal>
+      <Dependent Role="Evenement">
+        <PropertyRef Name="EvenementParcelleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FkEvenementParcelle">
+    <End Type="DbSuiviParcelleModel.Parcelle" Role="Parcelle" Multiplicity="1" />
+    <End Type="DbSuiviParcelleModel.Evenement" Role="Evenement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parcelle">
+        <PropertyRef Name="IdParcelle" />
+      </Principal>
+      <Dependent Role="Evenement">
+        <PropertyRef Name="ParcelleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
