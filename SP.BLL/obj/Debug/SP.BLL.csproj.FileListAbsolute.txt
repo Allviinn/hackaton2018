@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 D:\wamp64\www\HackathonACS\hackaton2018\hackaton2018\SP.BLL\bin\Debug\SP.BLL.dll.config
 D:\wamp64\www\HackathonACS\hackaton2018\hackaton2018\SP.BLL\bin\Debug\SP.BLL.dll
 D:\wamp64\www\HackathonACS\hackaton2018\hackaton2018\SP.BLL\bin\Debug\SP.BLL.pdb
@@ -14,3 +15,21 @@ D:\wamp64\www\HackathonACS\hackaton2018\hackaton2018\SP.BLL\obj\Debug\SP.BLL.csp
 D:\wamp64\www\HackathonACS\hackaton2018\hackaton2018\SP.BLL\obj\Debug\SP.BLL.csproj.CoreCompileInputs.cache
 D:\wamp64\www\HackathonACS\hackaton2018\hackaton2018\SP.BLL\obj\Debug\SP.BLL.dll
 D:\wamp64\www\HackathonACS\hackaton2018\hackaton2018\SP.BLL\obj\Debug\SP.BLL.pdb
+=======
+D:\Development\Hackathon\hackaton2018\SP.BLL\bin\Debug\SP.BLL.dll.config
+D:\Development\Hackathon\hackaton2018\SP.BLL\bin\Debug\SP.BLL.dll
+D:\Development\Hackathon\hackaton2018\SP.BLL\bin\Debug\SP.BLL.pdb
+D:\Development\Hackathon\hackaton2018\SP.BLL\bin\Debug\EntityFramework.dll
+D:\Development\Hackathon\hackaton2018\SP.BLL\bin\Debug\EntityFramework.SqlServer.dll
+D:\Development\Hackathon\hackaton2018\SP.BLL\bin\Debug\SP.BE.dll
+D:\Development\Hackathon\hackaton2018\SP.BLL\bin\Debug\SP.DAL.exe
+D:\Development\Hackathon\hackaton2018\SP.BLL\bin\Debug\SP.BE.pdb
+D:\Development\Hackathon\hackaton2018\SP.BLL\bin\Debug\SP.DAL.pdb
+D:\Development\Hackathon\hackaton2018\SP.BLL\bin\Debug\SP.DAL.exe.config
+D:\Development\Hackathon\hackaton2018\SP.BLL\bin\Debug\EntityFramework.xml
+D:\Development\Hackathon\hackaton2018\SP.BLL\bin\Debug\EntityFramework.SqlServer.xml
+D:\Development\Hackathon\hackaton2018\SP.BLL\obj\Debug\SP.BLL.csprojResolveAssemblyReference.cache
+D:\Development\Hackathon\hackaton2018\SP.BLL\obj\Debug\SP.BLL.csproj.CoreCompileInputs.cache
+D:\Development\Hackathon\hackaton2018\SP.BLL\obj\Debug\SP.BLL.dll
+D:\Development\Hackathon\hackaton2018\SP.BLL\obj\Debug\SP.BLL.pdb
+>>>>>>> 963055c571d83573a512aeffb20164df96e846ae

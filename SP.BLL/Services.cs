@@ -185,6 +185,35 @@ namespace SP.BLL
             }).FirstOrDefault();
         }
 
+        public IEnumerable<Evenement> GetEvenementByParcelle(int idParcelle)
+        {
+            return this._context.Evenements
+                .Where(eve => eve.ParcelleId == idParcelle)
+                .Select(even => new Evenement
+            {
+                CreationDate = even.CreationDate,
+                EvenementParcelleId = even.EvenementParcelleId,
+                IdEvenement = even.IdEvenement,
+                ParcelleId = even.ParcelleId,
+                EvenementParcelle = new EvenementParcelle
+                {
+                    Description = even.EvenementParcelle.Description,
+                    Nom = even.EvenementParcelle.Nom,
+                    IdEvenementParcelle = even.EvenementParcelle.IdEvenementParcelle
+                },
+                Parcelle = new Parcelle
+                {
+                    Adresse = even.Parcelle.Adresse,
+                    CreationDate = even.Parcelle.CreationDate,
+                    IdParcelle = even.Parcelle.IdParcelle,
+                    Lat = even.Parcelle.Lat,
+                    Lng = even.Parcelle.Lng,
+                    Nom = even.Parcelle.Nom,
+                    Ville = even.Parcelle.Ville
+                }
+            });
+        }
+
         public IEnumerable<Evenement> GetEvenements()
         {
             return this._context.Evenements.Select(even => new Evenement
@@ -295,7 +324,6 @@ namespace SP.BLL
         public int EditEvenement(Evenement evenement)
         {
             DAL.Evenement even = DAL.ManageData<DAL.Evenement>.Get(evenement.IdEvenement);
-            even.CreationDate = evenement.CreationDate;
             even.EvenementParcelleId = evenement.EvenementParcelleId;
             even.ParcelleId = evenement.ParcelleId;
 

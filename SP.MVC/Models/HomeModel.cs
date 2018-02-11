@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using SP.BE;
 
 namespace SP.MVC.Models
@@ -18,6 +19,22 @@ namespace SP.MVC.Models
             this.Evenement = new Evenement();
             this.Evenements = new List<Evenement>();
         }
+
+        public int IdParcelle { get; set; }
+        public SelectList SelectListEvenementParcelle { get; set; }
+
+        /// <summary>
+        /// Permet le chargement des catégories dans la SelectList passée à la vue.
+        /// </summary>
+        /// <param name="liste">Enumération des catégories.</param>
+        public void LoadEvenementParcelle(IEnumerable<EvenementParcelle> liste)
+        {
+            this.SelectListEvenementParcelle = new SelectList(
+                liste.ToList(),
+                nameof(this.EvenementParcelle.IdEvenementParcelle),
+                nameof(this.EvenementParcelle.Description));
+        }
+
 
         public User User { get; set; }
         public Parcelle Parcelle { get; set; }

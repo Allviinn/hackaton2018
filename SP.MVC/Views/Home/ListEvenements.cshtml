@@ -1,0 +1,45 @@
+﻿@model SP.MVC.Models.HomeModel
+
+@{
+    ViewBag.Title = "ListEvenements";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ListEvenements</h2>
+
+<p>
+    <a class="btn btn-success" href="@Url.Content("~/Home/AddEvenement?id=0&idParcelle=" + Model.IdParcelle)">Ajouter un evenement</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Evenement.CreationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EvenementParcelle.Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EvenementParcelle.Description)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.Evenements) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreationDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EvenementParcelle.Nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EvenementParcelle.Description)
+        </td>
+        <td>
+            <a class="btn btn-success" href="@Url.Content("~/Home/AddEvenement?id=" + item.IdEvenement + "&idParcelle=" + Model.IdParcelle)">Editer</a> |
+            <a class="btn btn-danger" href="@Url.Content("~/Home/DeleteParcelle?id=" + item.IdEvenement)">Supprimer</a>
+        </td>
+    </tr>
+}
+
+</table>

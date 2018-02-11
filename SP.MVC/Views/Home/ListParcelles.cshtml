@@ -52,9 +52,9 @@
                 @Html.DisplayFor(modelItem => item.CreationDate)
             </td>
             <td>
-                @Html.ActionLink("Edit", "EditParcelle", new { parcelle = item  }) |
-                @Html.ActionLink("Ajouter évènement", "AddEvenement", new { id = item.IdParcelle }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.IdParcelle })
+                <a class="btn btn-success" href="@Url.Content("~/Home/EditParcelle?id=" + item.IdParcelle)">Editer</a> |
+                <a class="btn btn-info" href="@Url.Content("~/Home/ListEvenements?id=" + item.IdParcelle)">Evènements</a> |
+                <a class="btn btn-danger" href="@Url.Content("~/Home/DeleteParcelle?id=" + item.IdParcelle)">Supprimer</a>
             </td>
         </tr>
     }

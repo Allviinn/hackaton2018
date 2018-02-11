@@ -8,6 +8,7 @@ D:\wamp64\www\HackathonACS\hackaton2018\SP.DAL\bin\Debug\EntityFramework.SqlServ
 D:\wamp64\www\HackathonACS\hackaton2018\SP.DAL\obj\Debug\SP.DAL.csproj.CoreCompileInputs.cache
 D:\wamp64\www\HackathonACS\hackaton2018\SP.DAL\obj\Debug\SP.DAL.exe
 D:\wamp64\www\HackathonACS\hackaton2018\SP.DAL\obj\Debug\SP.DAL.pdb
+<<<<<<< HEAD
 D:\wamp64\www\HackathonACS\hackaton2018\hackaton2018\SP.DAL\bin\Debug\SP.DAL.exe.config
 D:\wamp64\www\HackathonACS\hackaton2018\hackaton2018\SP.DAL\bin\Debug\SP.DAL.exe
 D:\wamp64\www\HackathonACS\hackaton2018\hackaton2018\SP.DAL\bin\Debug\SP.DAL.pdb
@@ -19,3 +20,16 @@ D:\wamp64\www\HackathonACS\hackaton2018\hackaton2018\SP.DAL\obj\Debug\SP.DAL.csp
 D:\wamp64\www\HackathonACS\hackaton2018\hackaton2018\SP.DAL\obj\Debug\SP.DAL.csproj.CoreCompileInputs.cache
 D:\wamp64\www\HackathonACS\hackaton2018\hackaton2018\SP.DAL\obj\Debug\SP.DAL.exe
 D:\wamp64\www\HackathonACS\hackaton2018\hackaton2018\SP.DAL\obj\Debug\SP.DAL.pdb
+=======
+D:\Development\Hackathon\hackaton2018\SP.DAL\bin\Debug\SP.DAL.exe.config
+D:\Development\Hackathon\hackaton2018\SP.DAL\bin\Debug\SP.DAL.exe
+D:\Development\Hackathon\hackaton2018\SP.DAL\bin\Debug\SP.DAL.pdb
+D:\Development\Hackathon\hackaton2018\SP.DAL\bin\Debug\EntityFramework.dll
+D:\Development\Hackathon\hackaton2018\SP.DAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\Development\Hackathon\hackaton2018\SP.DAL\bin\Debug\EntityFramework.xml
+D:\Development\Hackathon\hackaton2018\SP.DAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\Development\Hackathon\hackaton2018\SP.DAL\obj\Debug\SP.DAL.csprojResolveAssemblyReference.cache
+D:\Development\Hackathon\hackaton2018\SP.DAL\obj\Debug\SP.DAL.csproj.CoreCompileInputs.cache
+D:\Development\Hackathon\hackaton2018\SP.DAL\obj\Debug\SP.DAL.exe
+D:\Development\Hackathon\hackaton2018\SP.DAL\obj\Debug\SP.DAL.pdb
+>>>>>>> 963055c571d83573a512aeffb20164df96e846ae
