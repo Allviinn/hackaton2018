@@ -269,5 +269,52 @@ namespace SP.BLL
                 ParcelleId = evenement.ParcelleId
             });
         }
+
+        public int EditParcelle(Parcelle parcelle)
+        {
+            DAL.Parcelle par = DAL.ManageData<DAL.Parcelle>.Get(parcelle.IdParcelle);
+            par.Adresse = parcelle.Adresse;
+            par.CreationDate = parcelle.CreationDate;
+            par.Lat = parcelle.Lat;
+            par.Lng = parcelle.Lng;
+            par.Nom = parcelle.Nom;
+            par.Ville = parcelle.Ville;
+
+            return DAL.ManageData<DAL.Parcelle>.Update(par);
+        }
+
+        public int EditEvenementParcelle(EvenementParcelle evenementParcelle)
+        {
+            DAL.EvenementParcelle evenement = DAL.ManageData<DAL.EvenementParcelle>.Get(evenementParcelle.IdEvenementParcelle);
+            evenement.Description = evenementParcelle.Description;
+            evenement.Nom = evenementParcelle.Nom;
+
+            return DAL.ManageData<DAL.EvenementParcelle>.Update(evenement);
+        }
+
+        public int EditEvenement(Evenement evenement)
+        {
+            DAL.Evenement even = DAL.ManageData<DAL.Evenement>.Get(evenement.IdEvenement);
+            even.CreationDate = evenement.CreationDate;
+            even.EvenementParcelleId = evenement.EvenementParcelleId;
+            even.ParcelleId = evenement.ParcelleId;
+
+            return DAL.ManageData<DAL.Evenement>.Update(even);
+        }
+
+        public int DeleteParcelle(int id)
+        {
+            return DAL.ManageData<DAL.Parcelle>.Delete(id);
+        }
+
+        public int DeleteEvenementParcelle(int id)
+        {
+            return DAL.ManageData<DAL.EvenementParcelle>.Delete(id);
+        }
+
+        public int DeleteEvenement(int id)
+        {
+            return DAL.ManageData<DAL.Evenement>.Delete(id);
+        }
     }
 }

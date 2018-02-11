@@ -47,51 +47,7 @@ namespace SP.MVC.Controllers
             }
         }
 
-        public ActionResult EditEvenementParcelle(int id)
-        {
-            Context context = CreateContext();
-
-            try
-            {
-                //var evenementParcelle = this.Services.GetEvenementParcelle(id);
-                //EvenementParcelleModel model = new EvenementParcelleModel
-                //{
-                //    Description = evenementParcelle.Description,
-                //    Nom = evenementParcelle.Nom,
-                //    IdEvenementParcelle = evenementParcelle.IdEvenementParcelle
-                //};
-                //return View(model);
-                return this.View();
-            }
-            catch (Exception ex)
-            {
-                this.AddError(context.ErrorMessage, ex);
-                return this.RedirectToAction(nameof(HomeController.EditEvenementParcelle));
-            }
-        }
-
-        public ActionResult DeleteEvenementParcelle(int id)
-        {
-            Context context = CreateContext();
-
-            try
-            {
-                //var evenementParcelle = this.Services.GetEvenementParcelle(id);
-                //EvenementParcelleModel model = new EvenementParcelleModel
-                //{
-                //    Description = evenementParcelle.Description,
-                //    Nom = evenementParcelle.Nom,
-                //    IdEvenementParcelle = evenementParcelle.IdEvenementParcelle
-                //};
-                //return View(model);
-                return this.View();
-            }
-            catch (Exception ex)
-            {
-                this.AddError(context.ErrorMessage, ex);
-                return this.RedirectToAction(nameof(HomeController.DeleteEvenementParcelle));
-            }
-        }
+        #region EvenementParcelle
 
         public ActionResult AddEvenementParcelle()
         {
@@ -146,6 +102,99 @@ namespace SP.MVC.Controllers
                 return this.RedirectToAction(nameof(HomeController.ListEvenementsParcelle));
             }
         }
+
+        public ActionResult EditEvenementParcelle(int? id)
+        {
+            Context context = CreateContext();
+
+            try
+            {
+                HomeModel model = new HomeModel
+                {
+                    EvenementParcelle = id.HasValue ? this.Services.GetEvenementParcelle(id.Value) : null
+                };
+
+                if (model.EvenementParcelle == null)
+                {
+                    model.EvenementParcelle = new EvenementParcelle();
+                    return this.View(model);
+                }
+
+                return this.View(model);
+            }
+            catch (Exception ex)
+            {
+                this.AddError(context.ErrorMessage, ex);
+                return this.RedirectToAction(nameof(HomeController.EditEvenementParcelle));
+            }
+        }
+
+        [HttpPost]
+        public ActionResult EditEvenementParcelle(HomeModel model)
+        {
+            Context context = CreateContext();
+
+            try
+            {
+                this.Services.EditEvenementParcelle(model.EvenementParcelle);
+
+                this.AddSuccess("L'évenement est bien édité!");
+                return this.View(model);
+            }
+            catch (Exception ex)
+            {
+                this.AddError(context.ErrorMessage, ex);
+                return this.RedirectToAction(nameof(HomeController.EditEvenementParcelle));
+            }
+        }
+
+        public ActionResult DeleteEvenementParcelle(int id)
+        {
+            Context context = CreateContext();
+
+            try
+            {
+                this.AddSuccess("L'évenement a bien été supprimé");
+                return this.RedirectToAction(nameof(HomeController.ListEvenementsParcelle));
+            }
+            catch (Exception ex)
+            {
+                this.AddError(context.ErrorMessage, ex);
+                return this.RedirectToAction(nameof(HomeController.ListEvenementsParcelle));
+            }
+        }
+
+        #endregion EvenementParcelle
+
+        #region Parcelle
+
+        [HttpPost]
+        public ActionResult AddParcelle(string name, string lat, string lng, string ville)
+        {
+            Context context = CreateContext();
+            try
+            {
+                int message = this.Services.AddParcelle(new Parcelle
+                {
+                    Nom = name,
+                    Lat = lat,
+                    Lng = lng,
+                    Ville = ville
+                });
+
+                this.AddSuccess("Parcelle ajoutée!");
+                return this.RedirectToAction(nameof(HomeController.Index));
+            }
+            catch (Exception ex)
+            {
+                this.AddError(context.ErrorMessage, ex);
+                return this.RedirectToAction(nameof(HomeController.Index));
+            }
+        }
+
+        #endregion Parcelle
+
+        #region User
 
         [HttpGet]
         public ActionResult Login()
@@ -239,28 +288,6 @@ namespace SP.MVC.Controllers
             }
         }
 
-        [HttpPost]
-        public ActionResult AddParcelle(string name, string lat, string lng, string ville)
-        {
-            Context context = CreateContext();
-            try
-            {
-                int message = this.Services.AddParcelle(new Parcelle
-                {
-                    Nom = name,
-                    Lat = lat,
-                    Lng = lng,
-                    Ville = ville
-                });
-
-                this.AddSuccess("Parcelle ajoutée!");
-                return this.RedirectToAction(nameof(HomeController.Index));
-            }
-            catch (Exception ex)
-            {
-                this.AddError(context.ErrorMessage, ex);
-                return this.RedirectToAction(nameof(HomeController.Index));
-            }
-        }
+        #endregion User
     }
 }
