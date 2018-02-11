@@ -192,6 +192,57 @@ namespace SP.MVC.Controllers
             }
         }
 
+
+       
+
+        public ActionResult ListParcelles()
+        {
+            Context context = CreateContext();
+
+            try
+            {
+                HomeModel model = new HomeModel
+                {
+                    Parcelles = this.Services.GetParcelles().ToList()
+                };
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                this.AddError(context.ErrorMessage, ex);
+                return this.RedirectToAction(nameof(HomeController.ListParcelles));
+            }
+        }
+
+        public ActionResult EditParcelle(Parcelle parcelle)
+        {
+            Context context = CreateContext();
+
+            try
+            {
+                HomeModel model = new HomeModel
+                {
+                    Parcelle = this.Services.GetParcelle(parcelle.IdParcelle)
+                };
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                this.AddError(context.ErrorMessage, ex);
+                return this.RedirectToAction(nameof(HomeController.EditParcelle));
+            }
+        }
+
+        public ActionResult DeleteParcelle(int id)
+        {
+            Context context = CreateContext();
+
+            try
+            {
+                return this.RedirectToAction(nameof(HomeController.DeleteParcelle));
+            }
+        }
+        
         #endregion Parcelle
 
         #region User
@@ -289,5 +340,24 @@ namespace SP.MVC.Controllers
         }
 
         #endregion User
+
+        public ActionResult AddEvenement()
+        {
+            Context context = CreateContext();
+
+            try
+            {
+                HomeModel model = new HomeModel()
+                {
+
+                };
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                this.AddError(context.ErrorMessage, ex);
+                return this.RedirectToAction(nameof(HomeController.AddEvenement));
+            }
+        }
     }
 }

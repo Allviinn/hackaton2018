@@ -1,4 +1,4 @@
-﻿@model HomeModel
+﻿@model SP.MVC.Models.HomeModel
 
 @{
     ViewBag.Title = "ListParcelles";
@@ -10,52 +10,53 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Nom)
+            @Html.DisplayNameFor(model => model.Parcelle.Nom)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Ville)
+            @Html.DisplayNameFor(model => model.Parcelle.Ville)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Adresse)
+            @Html.DisplayNameFor(model => model.Parcelle.Adresse)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Lat)
+            @Html.DisplayNameFor(model => model.Parcelle.Lat)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Lng)
+            @Html.DisplayNameFor(model => model.Parcelle.Lng)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CreationDate)
+            @Html.DisplayNameFor(model => model.Parcelle.CreationDate)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nom)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ville)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Adresse)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Lat)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Lng)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreationDate)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdParcelle }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdParcelle }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdParcelle })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model.Parcelles)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ville)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adresse)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lng)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreationDate)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditParcelle", new { parcelle = item  }) |
+                @Html.ActionLink("Ajouter évènement", "AddEvenement", new { id = item.IdParcelle }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.IdParcelle })
+            </td>
+        </tr>
+    }
 
 </table>
