@@ -156,7 +156,7 @@
     <Compile Include="Models\EvenementModel.cs" />
     <Compile Include="Models\EvenementParcelleModel.cs" />
     <Compile Include="Models\HomeModel.cs" />
-    <Compile Include="Models\Parcelle.cs" />
+    <Compile Include="Models\ParcelleModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

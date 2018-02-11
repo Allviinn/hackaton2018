@@ -9,6 +9,6 @@ namespace SP.MVC.Models
     public class HomeModel
     {
         public User User { get; set; }
-        public Parcelle Parcelle { get; set; }
+        public ParcelleModel Parcelle { get; set; }
     }
 }
